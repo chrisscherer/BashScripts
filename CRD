@@ -1,0 +1,22 @@
+#!/bin/bash
+# Script to Compile, Run, and Display a cpp file from command line
+
+if [ -f $1 ] && [ "$1" != "" ]
+then
+  if [[ $1 == *.cpp ]]
+    then
+    if [[ "$2" != "" ]]
+      then
+      g++ -o $2 $1
+      ./$2
+    else
+      outfile=${1%.*}
+      g++ -o $outfile.out $1
+      ./$outfile.out
+    fi
+  else
+    echo "File should be a cpp file, try again!"
+  fi
+else
+  echo "File not found!"
+fi
